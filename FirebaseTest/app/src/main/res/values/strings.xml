@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FirebaseTest</string>
+    <string name="loggedUserMainTextView_text">Currently logged in:</string>
+    <string name="signMainButton_text">SIGN UP</string>
+    <string name="logMainButton_text">LOG IN</string>
+    <string name="loginRegisterEditText_hint">E-MAIL ADDRESS</string>
+    <string name="passRegisterEditText_hint">PASSWORD</string>
+    <string name="repassRegisterEditText_hint">RETYPE PASSWORD</string>
+    <string name="submitRegisterButton_text">SUBMIT</string>
+    <string name="emailLoginEditText_hint">EMAIL ADDRESS</string>
+    <string name="passwordLoginEditText_hint">PASSWORD</string>
+    <string name="sendLoginButton_text">SEND</string>
+</resources>
