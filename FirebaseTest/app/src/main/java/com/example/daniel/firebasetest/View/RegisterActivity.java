@@ -36,7 +36,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterViewI
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         registerPresenter = new RegisterPresenter();
-        registerPresenter.initializeFirebaseAuth();
     }
 
     @Override

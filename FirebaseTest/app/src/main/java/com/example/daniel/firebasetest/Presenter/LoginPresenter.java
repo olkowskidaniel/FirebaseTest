@@ -11,11 +11,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPresenter {
     LoginViewInterface loginView;
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-    public void firebaseAuthInitialize() {
-        firebaseAuth = FirebaseAuth.getInstance();
-    }
 
     public void attach(LoginViewInterface loginView) {
         this.loginView = loginView;
@@ -33,6 +30,7 @@ public class LoginPresenter {
                         if (task.isSuccessful()) {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             loginView.showLoggedSuccessMessage(user.getEmail());
+                            loginView.startLoggedActivity();
                         }else{
                             loginView.showLoginFailedMessage();
                         }

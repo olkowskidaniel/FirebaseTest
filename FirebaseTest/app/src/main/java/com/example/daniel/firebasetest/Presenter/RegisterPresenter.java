@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterPresenter {
     RegisterViewInterface registerView;
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     public void attach(RegisterViewInterface registerView) {
         this.registerView = registerView;
@@ -22,10 +22,6 @@ public class RegisterPresenter {
         this.registerView = null;
     }
 
-    public void initializeFirebaseAuth() {
-        firebaseAuth = FirebaseAuth.getInstance();
-    }
-
     public void registerAccount(String login, String password, String retypedPassword) {
         if (registerView.checkIfRetypedPasswordCorrect(password, retypedPassword)) {
             firebaseAuth.createUserWithEmailAndPassword(login, password)
@@ -33,7 +29,6 @@ public class RegisterPresenter {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Log.d("CREATE_USER", "createUserWithEmail: success");
                                 registerView.showRegisterSuccessMessage();
 
                             } else {
@@ -44,7 +39,5 @@ public class RegisterPresenter {
         } else {
             registerView.showPasswordMatchFailedMessage();
         }
-
     }
-
 }

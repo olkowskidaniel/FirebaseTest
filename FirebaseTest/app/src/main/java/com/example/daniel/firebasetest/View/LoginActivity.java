@@ -1,6 +1,7 @@
 package com.example.daniel.firebasetest.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginViewInterface{
+public class LoginActivity extends AppCompatActivity implements LoginViewInterface {
 
     @BindView(R.id.emailLoginEditText)
     EditText emailLoginEditText;
@@ -23,7 +24,8 @@ public class LoginActivity extends AppCompatActivity implements LoginViewInterfa
     @BindView(R.id.sendLoginButton)
     Button sendLoginButton;
 
-    LoginPresenter loginPresenter;
+    private LoginPresenter loginPresenter;
+    private Intent loggedIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewInterfa
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         loginPresenter = new LoginPresenter();
-        loginPresenter.firebaseAuthInitialize();
+        loggedIntent = new Intent(LoginActivity.this, LoggedActivity.class);
     }
 
     @Override
@@ -52,17 +54,20 @@ public class LoginActivity extends AppCompatActivity implements LoginViewInterfa
                 passwordLoginEditText.getText().toString().trim());
     }
 
-    public Activity getActivity(){
+    public void startLoggedActivity() {
+        startActivity(loggedIntent);
+    }
+
+    public Activity getActivity() {
         return LoginActivity.this;
     }
 
-    public void showLoggedSuccessMessage(String user){
+    public void showLoggedSuccessMessage(String user) {
         Toast.makeText(LoginActivity.this, user + " logged", Toast.LENGTH_LONG).show();
     }
 
-    public void showLoginFailedMessage(){
+    public void showLoginFailedMessage() {
         Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_LONG).show();
-
     }
 
 }

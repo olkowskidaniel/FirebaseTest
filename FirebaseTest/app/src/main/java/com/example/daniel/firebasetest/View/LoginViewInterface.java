@@ -6,4 +6,5 @@ public interface LoginViewInterface {
     Activity getActivity();
     void showLoggedSuccessMessage(String user);
     void showLoginFailedMessage();
+    void startLoggedActivity();
 }

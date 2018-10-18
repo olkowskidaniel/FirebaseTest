@@ -10,4 +10,6 @@
     <string name="emailLoginEditText_hint">EMAIL ADDRESS</string>
     <string name="passwordLoginEditText_hint">PASSWORD</string>
     <string name="sendLoginButton_text">SEND</string>
+    <string name="usernameLoggedTextView_text">Currently logged:</string>
+    <string name="logoutLoggedButton_text">LOG OUT</string>
 </resources>

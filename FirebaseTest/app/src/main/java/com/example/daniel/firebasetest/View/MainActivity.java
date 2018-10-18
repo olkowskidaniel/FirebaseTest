@@ -18,8 +18,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainViewInterface {
 
-    @BindView(R.id.loggedUserMainTextView)
-    TextView loggedUserMainTextView;
     @BindView(R.id.signMainButton)
     Button signMainButton;
     @BindView(R.id.logMainButton)
@@ -28,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     private MainActivityPresenter mainActivityPresenter;
     private Intent loginIntent;
     private Intent registerIntent;
+    private Intent loggedIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +36,14 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         mainActivityPresenter = new MainActivityPresenter();
         loginIntent = new Intent(MainActivity.this, LoginActivity.class);
         registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
+        loggedIntent = new Intent(MainActivity.this, LoggedActivity.class);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         mainActivityPresenter.attach(this);
+        mainActivityPresenter.checkIfUserLogged();
     }
 
     @Override
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         startActivity(registerIntent);
     }
 
-    public void updateUI(String login) {
-
+    public  void startLoggedActivity(){
+        startActivity(loggedIntent);
     }
 }
